@@ -1,16 +1,16 @@
 const lodeData = async () => {
-    toggleShowSpinner(true);
+    toggleShowAllPostsSpinner(true);
     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
     const data = await res.json();
-    displayShowData(data.posts)
+    showAllPostsData(data.posts)
 
     setTimeout(() => {
-        toggleShowSpinner(false);
+        toggleShowAllPostsSpinner(false);
     }, 2000)
 
 };
 // show all posts
-const displayShowData = (data) => {
+const showAllPostsData = (data) => {
     const cardContainer = document.getElementById('all-posts');
     cardContainer.innerHTML = '';
     data.forEach((post) => {
@@ -84,7 +84,7 @@ const outSideData = (title, view) => {
 
 // search field
 const searchButton = () => {
-    toggleShowSpinner(true);
+    toggleShowAllPostsSpinner(true);
     const searchField = document.getElementById('search-field').value;
     showSearchResult(searchField);
 }
@@ -96,9 +96,9 @@ const showSearchResult = async (searchText) => {
 
     const fullSearchResult = data.posts;
 
-    displayShowData(fullSearchResult);
+    showAllPostsData(fullSearchResult);
     setTimeout(() => {
-        toggleShowSpinner(false);
+        toggleShowAllPostsSpinner(false);
         document.getElementById('search-field').value = '';
     }, 2000);
 }
@@ -141,7 +141,7 @@ const latestNews = async () => {
 };
 
 // spinner show function
-const toggleShowSpinner = (isLoading) => {
+const toggleShowAllPostsSpinner = (isLoading) => {
     const spinner = document.getElementById('show-spinner');
     if (isLoading) {
         spinner.classList.remove('hidden');

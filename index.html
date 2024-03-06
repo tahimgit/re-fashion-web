@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Re-Fashion</title>
+    <title>Re-Fashon</title>
     <!-- google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
     * {
         font-family: "Mulish", sans-serif;
         margin: 0;
-        pattaching: 0;
+        padding: 0;
         box-sizing: border-box;
     }
 </style>
@@ -32,13 +32,13 @@
             </div>
 
             <div class="navbar-end">
-                <div class="secrect lg:flex lg:gap-5 lg:mr-3">
+                <div class="hidden lg:flex lg:gap-5 lg:mr-3">
                     <a href="" class="tooltip rounded-full border p-4 bg-[#f8f8f8]" data-tip="Home"><img
                             src="./images/home.png" alt=""></a>
                     <a href="" class="tooltip rounded-full border p-4 bg-[#f8f8f8]" data-tip="Edit"><img
                             src="./images/pen.png" alt=""></a>
-                    <a href="" class="tooltip rounded-full border p-4 bg-[#f8f8f8]" data-tip="attach"><img
-                            src="./images/attach.png" alt=""></a>
+                    <a href="" class="tooltip rounded-full border p-4 bg-[#f8f8f8]" data-tip="Add"><img
+                            src="./images/add.png" alt=""></a>
                     <a href="" class="tooltip rounded-full border p-4 bg-[#f8f8f8]" data-tip="Flag"><img
                             src="./images/flag.png" alt=""></a>
                 </div>
@@ -59,7 +59,7 @@
                     </h2>
                     <p>Share your favorite opinion and win and wp forum coffee mug!</p>
                     <div class="join -ml-5 lg:-ml-0 mt-8">
-                        <input id="search-option" class="input input-bordered text-black rounded-full join-item"
+                        <input id="search-field" class="input input-bordered text-black rounded-full join-item"
                             placeholder="Search here" />
                         <button onclick="searchButton()" class="btn join-item rounded-r-full bg-[#797DFC]">Search</button>
                     </div>
@@ -86,6 +86,7 @@
             </div>
         </section>
         <!-- banner section end -->
+
         <!-- Let’s Discuss section start -->
         <section class="my-24">
             <div class="text-center">
@@ -94,14 +95,14 @@
                     integrated testing features allow for a streamlined .</p>
             </div>
             <!-- show spinner -->
-            <div id="show-spinner" class="text-center my-40 secrect">
+            <div id="all-post-spinner" class="text-center my-40 hidden">
                 <span class="loading loading-spinner loading-lg"></span>
             </div>
             <!-- card -->
             <div class="flex-1 lg:flex gap-8 mt-10 justify-center">
                 
 
-                <div id="all-posts" class="space-y-4">
+                <div id="card-container" class="space-y-4">
                 </div>
 
                 <div id="side-bar-container">
@@ -113,18 +114,16 @@
                                 <p>Mark as read (<span id="count-value">0</span>)</p>
                             </div>
                         </div>
-                        
-                        <div id="mark-as-read" class="space-y-4"></div>
+                        <div id="out-side-container" class="space-y-4">
                             
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
         <!-- Let’s Discuss section end -->
+
         <!-- Join Our Forum section start -->
-        
         <section class="my-24">
             <div
                 class="bg-[#12132D] bg-cover rounded-xl w-full  flex-1 lg:flex justify-center items-center p-3 space-y-10 lg:p-24 lg:gap-48">
@@ -139,8 +138,8 @@
                     <img  src="./images/joinforum.png" alt="">
                 </div>
         </section>
-        
         <!-- Join Our Forum section end -->
+
         <!-- Latest Posts section start -->
         <section class="my-24">
             <div class="text-center">
@@ -149,30 +148,34 @@
                     integrated testing features allow for a streamlined .</p>
             </div>
             <!-- show spinner -->
-            <div id="latest-post-spinner" class="text-center my-40 secrect">
-                <span class="loading loading-spinner loading-lg"></span></div>
-             <div id="latest-post" class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-        
+            <div id="latest-post" class="text-center my-40 hidden">
+                <span class="loading loading-spinner loading-lg"></span>
+            </div>
+            
+            <div id="latest-news" class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                
+            </div>
         </section>
-        <!-- Latest Posts finish -->
+        <!-- Latest Posts section end -->
 
     </main>
 <!-- footer section start -->
-    <footer class="footer footer-center p-10 bg-[#f7f7f8] text-black">"Fashion is very important. It is life-enhancing and, like everything that gives pleasure, it is worth doing well.” —Vivienne Westwood .
+    <footer class="footer footer-center p-10 bg-[#f7f7f8] text-black">
+        <h1>Fashion is very important. It is life-enhancing and, like everything that gives pleasure, it is worth doing well.” —Vivienne Westwood.</h1>
         <div class="space-y-6 text-center">
-            <h2 class="text-6xl font-black">Re-Fashion</h2>
-            <p class="w-full text-center lg:w-[600]">It's a new era in fashion - there are no rules. It's all about the individual and personal style, wearing high-end, low-end, classic labels, and up-and-coming designers all together.</p>
+            <h2 class="text-6xl font-black">Re-Fashon</h2>
+            <p class="w-full text-center lg:w-[600]">Contrary to popular belief, Lorem Ipsum is not simply random text.
+                It has roots in a piece of classical Latin literature from 45 BC</p>
             <img src="./images/Social.png" alt="">
-        </div> 
+        </div>
         <hr class="border-2  w-full">
-        <p>Copyright © 2024 - All right reserved</p>
+    <p>Copyright © 2024 - All right reserved</p>
+
 
     </footer>
 <!-- footer section end -->
 <!-- script link -->
-    
-<script src="index.js"></script>
-
+    <script src="index.js"></script>
 </body>
 
 </html>

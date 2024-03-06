@@ -1,22 +1,22 @@
 const lodeData = async () => {
-    toggleShowAllPostsSpinner(true);
+    toggleAllPostSpinner(true);
     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
     const data = await res.json();
-    showAllPostsData(data.posts)
+    showAllPostData(data.posts)
 
     setTimeout(() => {
-        toggleShowAllPostsSpinner(false);
+        toggleAllPostSpinner(false);
     }, 2000)
 
 };
-// show all posts
-const showAllPostsData = (data) => {
-    const cardContainer = document.getElementById('all-posts');
+// show all data
+const showAllPostData = (data) => {
+    const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = '';
     data.forEach((post) => {
         const newDiv = document.createElement('div');
         newDiv.innerHTML = `
-        <div id="all-posts" class="card card-side bg-base-100 bg-[#F3F3F5]  transition">
+        <div id="card-container" class="card card-side bg-base-100 bg-[#F3F3F5]  transition">
         <div class="mt-6">
             <figure><img class="w-20 h-20 rounded-xl ml-10  relative" src="${post.image}" alt="Movie" /></figure>
             <div class="w-4 h-4 rounded-full ${post.isActive ? 'bg-green-500' : 'bg-red-500'} absolute top-4 left-28"></div>
@@ -46,22 +46,18 @@ const showAllPostsData = (data) => {
 
                 </div>
                 <button onclick="outSideData('${post.title}' , '${post.view_count}',)"><img src="./images/email.png" alt=""></button>
-    
             </div>
         </div>
     </div>
         `;
-        cardContainer.subjoin(newDiv);
-        
+        cardContainer.appendChild(newDiv);
     });
 };
 
-// out Side Data load and count value attach
-
+// out Side Data load and count value add
 const outSideData = (title, view) => {
     
-    const outSideContainer = document.getElementById('mark-as-read');
-    
+    const outSideContainer = document.getElementById('out-side-container');
     const outSideDiv = document.createElement('div');
 
     const countValue = document.getElementById('count-value');
@@ -74,25 +70,21 @@ const outSideData = (title, view) => {
         <p>${view}</p>
     </div>
     `;
-    outSideContainer.subjoin(outSideDiv);
+    outSideContainer.appendChild(outSideDiv);
 
     const incrementCount = () => {
         let countTextNumber = parseInt(countValue.innerText);
         countTextNumber += 1;
         countValue.innerText = countTextNumber;
     }
-
     incrementCount()
-
 };
 
 // search field
-
 const searchButton = () => {
-    toggleShowAllPostsSpinner(true);
-    const searchField = document.getElementById('search-option').value;
+    toggleAllPostSpinner(true);
+    const searchField = document.getElementById('search-field').value;
     showSearchResult(searchField);
-
 }
 
 // search result
@@ -100,28 +92,26 @@ const showSearchResult = async (searchText) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`);
     const data = await res.json();
 
-    const allSearchResult = data.posts;
+    const fullSearchResult = data.posts;
 
-    showAllPostsData(allSearchResult);
+    showAllPostData(fullSearchResult);
     setTimeout(() => {
-        toggleShowAllPostsSpinner(false);
-        document.getElementById('search-option').value = '';
+        toggleAllPostSpinner(false);
+        document.getElementById('search-field').value = '';
     }, 2000);
-
 }
 
 // latest news show
 const latestNews = async () => {
-    toggleShowLatestPostSpinner(true);
+    toggleLatestPostSpinner(true);
     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
     const data = await res.json();
-    const latestNews = document.getElementById('latest-post');
+    const latestNews = document.getElementById('latest-news');
     data.forEach((item) => {
         const itemDiv = document.createElement('div');
         itemDiv.className = 'card w-full bg-base-100 p-6';
         itemDiv.innerHTML = `
         
-
         <figure><img src="${item.cover_image}"
                 alt="Shoes" /></figure>
         <div class="mt-4 space-y-3">
@@ -139,33 +129,30 @@ const latestNews = async () => {
                 </div>
             </div>
         </div>
-         `;
-
-         latestNews.subjoin(itemDiv);
-
+    
+        `;
+        latestNews.appendChild(itemDiv);
     });
-
     setTimeout(() => {
-        toggleShowLatestPostSpinner(false);
+        toggleLatestPostSpinner(false);
     }, 2000)
-
 };
 
 // spinner show function
-const toggleShowAllPostsSpinner = (isLoading) => {
-    const spinner = document.getElementById('show-spinner');
+const toggleAllPostSpinner = (isLoading) => {
+    const spinner = document.getElementById('all-post-spinner');
     if (isLoading) {
-        spinner.classList.erase('secrect');
+        spinner.classList.remove('hidden');
     } else {
-        spinner.classList.attach('secrect');
+        spinner.classList.add('hidden');
     }
 };
-const toggleShowLatestPostSpinner = (isLoading) => {
-    const spinner = document.getElementById('latest-post-spinner');
+const toggleLatestPostSpinner = (isLoading) => {
+    const spinner = document.getElementById('latest-post');
     if (isLoading) {
-        spinner.classList.erase('secrect');
+        spinner.classList.remove('hidden');
     } else {
-        spinner.classList.attach('secrect');
+        spinner.classList.add('hidden');
     }
 };
 

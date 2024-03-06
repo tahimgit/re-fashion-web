@@ -85,7 +85,7 @@ const outSideData = (title, view) => {
 // search field
 const searchButton = () => {
     toggleShowAllPostsSpinner(true);
-    const searchField = document.getElementById('search-field').value;
+    const searchField = document.getElementById('search-option').value;
     showSearchResult(searchField);
 }
 
@@ -99,7 +99,7 @@ const showSearchResult = async (searchText) => {
     showAllPostsData(fullSearchResult);
     setTimeout(() => {
         toggleShowAllPostsSpinner(false);
-        document.getElementById('search-field').value = '';
+        document.getElementById('search-option').value = '';
     }, 2000);
 }
 
@@ -133,7 +133,9 @@ const latestNews = async () => {
         </div>
     
         `;
+        
         latestNews.appendChild(itemDiv);
+
     });
     setTimeout(() => {
         toggleShowLatestPostSpinner(false);
@@ -144,17 +146,17 @@ const latestNews = async () => {
 const toggleShowAllPostsSpinner = (isLoading) => {
     const spinner = document.getElementById('show-spinner');
     if (isLoading) {
-        spinner.classList.remove('hidden');
+        spinner.classList.remove('secrect');
     } else {
-        spinner.classList.add('hidden');
+        spinner.classList.add('secrect');
     }
 };
 const toggleShowLatestPostSpinner = (isLoading) => {
     const spinner = document.getElementById('latest-post-spinner');
     if (isLoading) {
-        spinner.classList.remove('hidden');
+        spinner.classList.remove('secrect');
     } else {
-        spinner.classList.add('hidden');
+        spinner.classList.add('secrect');
     }
 };
 

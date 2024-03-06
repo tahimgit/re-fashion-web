@@ -51,7 +51,7 @@ const showAllPostsData = (data) => {
         </div>
     </div>
         `;
-        cardContainer.appendChild(newDiv);
+        cardContainer.subjoin(newDiv);
     });
 };
 
@@ -72,7 +72,7 @@ const outSideData = (title, view) => {
         <p>${view}</p>
     </div>
     `;
-    outSideContainer.appendChild(outSideDiv);
+    outSideContainer.subjoin(outSideDiv);
 
     const incrementCount = () => {
         let countTextNumber = parseInt(countValue.innerText);
@@ -114,6 +114,7 @@ const latestNews = async () => {
         itemDiv.className = 'card w-full bg-base-100 p-6';
         itemDiv.innerHTML = `
         
+
         <figure><img src="${item.cover_image}"
                 alt="Shoes" /></figure>
         <div class="mt-4 space-y-3">
@@ -131,15 +132,17 @@ const latestNews = async () => {
                 </div>
             </div>
         </div>
-    
+
         `;
-        
-        latestNews.appendChild(itemDiv);
+
+        latestNews.subjoin(itemDiv);
 
     });
+
     setTimeout(() => {
         toggleShowLatestPostSpinner(false);
     }, 2000)
+    
 };
 
 // spinner show function

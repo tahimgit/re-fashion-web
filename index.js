@@ -52,10 +52,12 @@ const showAllPostsData = (data) => {
     </div>
         `;
         cardContainer.subjoin(newDiv);
+        
     });
 };
 
 // out Side Data load and count value attach
+
 const outSideData = (title, view) => {
     
     const outSideContainer = document.getElementById('mark-as-read');
@@ -81,14 +83,16 @@ const outSideData = (title, view) => {
     }
 
     incrementCount()
-    
+
 };
 
 // search field
+
 const searchButton = () => {
     toggleShowAllPostsSpinner(true);
     const searchField = document.getElementById('search-option').value;
     showSearchResult(searchField);
+
 }
 
 // search result
@@ -96,13 +100,14 @@ const showSearchResult = async (searchText) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`);
     const data = await res.json();
 
-    const fullSearchResult = data.posts;
+    const allSearchResult = data.posts;
 
-    showAllPostsData(fullSearchResult);
+    showAllPostsData(allSearchResult);
     setTimeout(() => {
         toggleShowAllPostsSpinner(false);
         document.getElementById('search-option').value = '';
     }, 2000);
+
 }
 
 // latest news show
@@ -134,10 +139,9 @@ const latestNews = async () => {
                 </div>
             </div>
         </div>
+         `;
 
-        `;
-
-        latestNews.subjoin(itemDiv);
+         latestNews.subjoin(itemDiv);
 
     });
 

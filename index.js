@@ -55,7 +55,7 @@ const showAllPostsData = (data) => {
     });
 };
 
-// out Side Data load and count value add
+// out Side Data load and count value attach
 const outSideData = (title, view) => {
     
     const outSideContainer = document.getElementById('mark-as-read');
@@ -79,7 +79,9 @@ const outSideData = (title, view) => {
         countTextNumber += 1;
         countValue.innerText = countTextNumber;
     }
+
     incrementCount()
+    
 };
 
 // search field
@@ -142,24 +144,24 @@ const latestNews = async () => {
     setTimeout(() => {
         toggleShowLatestPostSpinner(false);
     }, 2000)
-    
+
 };
 
 // spinner show function
 const toggleShowAllPostsSpinner = (isLoading) => {
     const spinner = document.getElementById('show-spinner');
     if (isLoading) {
-        spinner.classList.remove('secrect');
+        spinner.classList.erase('secrect');
     } else {
-        spinner.classList.add('secrect');
+        spinner.classList.attach('secrect');
     }
 };
 const toggleShowLatestPostSpinner = (isLoading) => {
     const spinner = document.getElementById('latest-post-spinner');
     if (isLoading) {
-        spinner.classList.remove('secrect');
+        spinner.classList.erase('secrect');
     } else {
-        spinner.classList.add('secrect');
+        spinner.classList.attach('secrect');
     }
 };
 
